@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - DCAA Nettplus</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <img src="images/LogoNet.png" alt="Logo Empresa NetPlus">
+            <h1>NettPlus Dashboard</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="requerimientos.html">Requerimientos</a></li>
+                <li><a href="tecnologias.html">Tecnologías</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Del Excel crudo al dashboard</h2>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>Problema o necesidad identificada</h3>
+                    <p>Actualmente, la empresa NetPlus utiliza el sistema Z-BioTime para el registro biométrico de su personal. El problema radica en que la plataforma solo exporta los datos crudos en formato Excel, obligando al Asistente de Recursos Humanos a realizar diariamente una revisión manual exhaustiva para cruzar marcaciones, calcular atrasos y registrar justificaciones. Esta carga operativa es ineficiente, propensa a errores humanos y retrasa la consolidación mensual necesaria para el pago de la nómina.</p>
+                </div>
+                <div class="card">
+                    <h3>Objetivo de la aplicación web</h3>
+                    <p>Desarrollar un sistema web interactivo (Dashboard DCAA Nettplus) que automatice la importación, validación y procesamiento de los reportes Excel de Z-BioTime (marcaciones, permisos, vacaciones, horas extras). El sistema cuenta con un motor de reglas que procesará la información para generar tres salidas clave: un dashboard diario de asistencia, un consolidado mensual de nómina y un panel de indicadores estratégicos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>3 roles</h2>
+
+            <div class="tabla">
+                <table>
+                    <tr>
+                        <th>Rol</th>
+                        <th>Qué hace</th>
+                    </tr>
+                    <tr>
+                        <td>Recursos Humanos (RRHH)</td>
+                        <td>Es la única puerta de entrada de datos al sistema. Responsable de cargar los archivos Excel, validar la estructura y visualizar el dashboard diario (totales de ausentes, atrasados, horas extras y vacaciones).</td>
+                    </tr>
+                    <tr>
+                        <td>Contabilidad</td>
+                        <td>Responsable de generar y revisar el resumen de nómina mensual por colaborador (utilizando el corte del 21 al 20). Tiene permisos para exportar este consolidado en formatos estandarizados (Excel y PDF). No carga archivos.</td>
+                    </tr>
+                    <tr>
+                        <td>Desarrollo Organizacional (DO)</td>
+                        <td>Rol estratégico con acceso de solo lectura a los datos diarios. Visualiza los indicadores (asistencia, headcount y rotación), registra las altas/bajas de personal y administra el sistema (gestión de usuarios y configuración de parámetros como tolerancias y cortes). No carga archivos.</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>Qué entra y qué no</h2>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>Incluido en el MVP</h3>
+                    <ul>
+                        <li>Autenticación segura mediante JWT y contraseñas cifradas (Argon2).</li>
+                        <li>Importación, validación de estructura y limpieza de reportes Excel de Z-BioTime.</li>
+                        <li>Motor de reglas en el servidor: cálculo de atrasos (con tolerancia configurable), horas extras (suplementarias y extraordinarias) y turnos.</li>
+                        <li>Gestión de cortes mensuales dinámicos (por defecto, del 21 del mes anterior al 20 del mes actual).</li>
+                        <li>Dashboards separados por rol: Diario (RRHH), Nómina (Contabilidad) e Indicadores (DO).</li>
+                        <li>Soporte para recarga de archivos sin duplicación de registros (carga transaccional).</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Fuera del alcance de esta versión</h3>
+                    <ul>
+                        <li>Conexión directa mediante API o base de datos nativa con el hardware del reloj biométrico Z-BioTime.</li>
+                        <li>Envío de alertas automáticas por correo electrónico (clasificado como mejora futura).</li>
+                        <li>Descuento o control de la hora de almuerzo.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

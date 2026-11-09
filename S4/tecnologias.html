@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologías - DCAA Nettplus</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <img src="images/LogoNet.png" alt="Logo Empresa NetPlus">
+            <h1>NettPlus Dashboard</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="requerimientos.html">Requerimientos</a></li>
+                <li><a href="tecnologias.html">Tecnologías</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>3 bloques principales</h2>
+
+            <div class="tabla">
+                <table>
+                    <tr>
+                        <th>Bloque</th>
+                        <th>Qué hace</th>
+                    </tr>
+                    <tr>
+                        <td>Carga y Validación</td>
+                        <td>Único punto de entrada gestionado por RRHH. Valida columnas obligatorias y evita registros duplicados.</td>
+                    </tr>
+                    <tr>
+                        <td>Motor de Reglas (Servidor)</td>
+                        <td>Construido como una API REST. Aplica el corte del 21 al 20, gestiona turnos y procesa únicamente las solicitudes aprobadas, sin recalcular nada en el navegador.</td>
+                    </tr>
+                    <tr>
+                        <td>Sitio Web (Cliente)</td>
+                        <td>Consume la información por HTTPS y distribuye las vistas en tres grandes módulos: Dashboard diario (RRHH), Resumen de nómina (Contabilidad) e Indicadores (DO).</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>11 herramientas, un solo stack</h2>
+
+            <div class="tabla">
+                <table>
+                    <tr>
+                        <th>Capa</th>
+                        <th>Tecnología</th>
+                        <th>Qué hace</th>
+                    </tr>
+                    <tr>
+                        <td>Frontend</td>
+                        <td>React 18+ Vite + TypeScript</td>
+                        <td>Aplicación web de una sola página (SPA) con las pantallas del sitio.</td>
+                    </tr>
+                    <tr>
+                        <td>Estilos</td>
+                        <td>Tailwind CSS con tokens de marca</td>
+                        <td>Paleta, tipografía y logo reemplazables sin tocar los componentes (RNF-003).</td>
+                    </tr>
+                    <tr>
+                        <td>Gráficos</td>
+                        <td>Recharts</td>
+                        <td>Visualización de los indicadores de asistencia, headcount y rotación.</td>
+                    </tr>
+                    <tr>
+                        <td>Backend</td>
+                        <td>Python 3.12 + FastAPI</td>
+                        <td>Construcción de la API REST y el motor de reglas de negocio (corte 21-20, turnos).</td>
+                    </tr>
+                    <tr>
+                        <td>Procesamiento de Excel</td>
+                        <td>pandas + openpyxl</td>
+                        <td>Lectura de los reportes crudos de Z-BioTime y exportación a formatos .xlsx.</td>
+                    </tr>
+                    <tr>
+                        <td>Exportación a PDF</td>
+                        <td>ReportLab</td>
+                        <td>Generación del resumen de nómina y el panel de indicadores en PDF.</td>
+                    </tr>
+                    <tr>
+                        <td>Base de datos</td>
+                        <td>PostgreSQL 16 (SQLite en desarrollo local)</td>
+                        <td>Almacenamiento relacional de empleados, horarios, marcaciones, solicitudes, cargas y usuarios.</td>
+                    </tr>
+                    <tr>
+                        <td>Acceso a datos</td>
+                        <td>SQLAlchemy + Alembic</td>
+                        <td>Manejo de modelos de base de datos y migraciones versionadas de forma programática.</td>
+                    </tr>
+                    <tr>
+                        <td>Autenticación</td>
+                        <td>JWT en cookie HttpOnly + hash Argon2</td>
+                        <td>Gestión de sesiones por rol y cifrado de contraseñas de alta seguridad (RNF-002).</td>
+                    </tr>
+                    <tr>
+                        <td>Pruebas (Testing)</td>
+                        <td>pytest, Postman y Playwright</td>
+                        <td>Pruebas automatizadas de las reglas de negocio, la API y recorridos de pantallas en navegadores web.</td>
+                    </tr>
+                    <tr>
+                        <td>Despliegue y Hosting</td>
+                        <td>Docker Compose + Nginx con HTTPS (Let's Encrypt)</td>
+                        <td>Contenerización del entorno para un servidor único, accesible de manera segura (RNF-004).</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

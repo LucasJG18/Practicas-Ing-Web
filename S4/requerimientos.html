@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requerimientos - DCAA Nettplus</title>
+    
+    <!-- Aquí ocurre la magia de la conexión -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <img src="images/LogoNet.png" alt="Logo Empresa NetPlus">
+            <h1>NettPlus Dashboard</h1>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="requerimientos.html">Requerimientos</a></li>
+                <li><a href="tecnologias.html">Tecnologías</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <p class="titulo-indice"><strong>Índice de la página:</strong></p>
+        <div class="botones-tablas">
+            <a href="#funcionales">Requisitos Funcionales (RF)</a>
+            <a href="#no-funcionales">Requisitos No Funcionales (RNF)</a>
+        </div>
+
+        <section id="funcionales">
+            <h2>27 requisitos, 19 en el MVP</h2>
+            <div class="tabla">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Declaración (EARS)</th>
+                    <th>Criterio de aceptación</th>
+                    <th>Prioridad</th>
+                </tr>
+                <tr>
+                    <td>RF-001</td>
+                    <td>Carga de archivos</td>
+                    <td>CUANDO RRHH cargue los Excel de marcaciones, permisos, horas extras, vacaciones y horarios, EL SISTEMA DEBE extraer y procesar la información.</td>
+                    <td>Archivos importados a la base sin pérdida de registros.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-002</td>
+                    <td>Validación de estructura</td>
+                    <td>MIENTRAS se procesan archivos, CUANDO falten columnas obligatorias, EL SISTEMA DEBE detener la carga y alertar.</td>
+                    <td>La alerta indica el archivo, la hoja y la columna que falta.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-003</td>
+                    <td>Dashboard diario</td>
+                    <td>CUANDO se consulte una fecha, EL SISTEMA DEBE mostrar los empleados ausentes y atrasados.</td>
+                    <td>Tabla con minutos de atraso calculados contra el turno asignado y su clasificación (leve, moderado, grave).</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-004</td>
+                    <td>Exportación mensual</td>
+                    <td>CUANDO Contabilidad finalice la revisión, EL SISTEMA DEBE exportar el consolidado en Excel y PDF.</td>
+                    <td>Descarga de ambos archivos con la estructura de nómina.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-005</td>
+                    <td>Headcount y rotación</td>
+                    <td>DONDE existan datos históricos, EL SISTEMA DEBE calcular el headcount y la rotación general y por área.</td>
+                    <td>Gráficas visibles en el panel de DO.</td>
+                    <td>Should</td>
+                </tr>
+                <tr>
+                    <td>RF-006</td>
+                    <td>Control de roles</td>
+                    <td>CUANDO un usuario inicie sesión, EL SISTEMA DEBE restringir las vistas según su rol.</td>
+                    <td>Contabilidad no ve el dashboard diario; RRHH no ve indicadores de rotación.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-007</td>
+                    <td>Recarga sin duplicados</td>
+                    <td>CUANDO RRHH cargue un reporte de fechas ya procesadas, EL SISTEMA DEBE reemplazar los datos previos de esas fechas.</td>
+                    <td>Cargar dos veces el mismo archivo no cambia el conteo; si trae cambios, se actualizan.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-008</td>
+                    <td>Identificación de empleados</td>
+                    <td>EL SISTEMA DEBE identificar a cada empleado por su cédula y relacionarlo con su ID de Z-BioTime, nombre y área.</td>
+                    <td>Todo registro queda asociado a un empleado; los IDs desconocidos se listan en el reporte de la carga.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-009</td>
+                    <td>Autenticación</td>
+                    <td>CUANDO el usuario ingrese credenciales válidas, EL SISTEMA DEBE dar acceso al panel de su rol.</td>
+                    <td>Las inválidas muestran error y tras 5 intentos fallidos la cuenta se bloquea 15 min.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-010</td>
+                    <td>Horas extras del día</td>
+                    <td>CUANDO se consulte una fecha, EL SISTEMA DEBE mostrar quiénes hicieron horas extras, con horas, tipo y estado de la solicitud.</td>
+                    <td>La lista coincide con las solicitudes del reporte para esa fecha.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-011</td>
+                    <td>Vacaciones y permisos</td>
+                    <td>CUANDO se consulte una fecha, EL SISTEMA DEBE mostrar quiénes están de vacaciones, con permiso o con cambio de turno.</td>
+                    <td>Se listan solo solicitudes aprobadas que cubren la fecha.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-012</td>
+                    <td>Solicitudes pendientes</td>
+                    <td>EL SISTEMA DEBE mostrar las solicitudes pendientes en una lista aparte de las aprobadas.</td>
+                    <td>Las pendientes no suman a ningún total.</td>
+                    <td>Should</td>
+                </tr>
+                <tr>
+                    <td>RF-013</td>
+                    <td>Filtros</td>
+                    <td>CUANDO el usuario aplique un filtro, EL SISTEMA DEBE actualizar los resultados por fecha, área, colaborador, tipo de novedad y estado.</td>
+                    <td>Cada filtro reduce la lista al criterio elegido.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-014</td>
+                    <td>Totales del día</td>
+                    <td>EL SISTEMA DEBE mostrar los totales del día: atrasos, ausencias, horas extras, vacaciones y permisos.</td>
+                    <td>Cada total coincide con la suma de las filas de su lista.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-015</td>
+                    <td>Resumen por colaborador</td>
+                    <td>CUANDO Contabilidad seleccione un corte, EL SISTEMA DEBE generar por colaborador las horas trabajadas, horas extras aprobadas por tipo, atrasos, ausencias, vacaciones y permisos.</td>
+                    <td>Coincide con el cálculo manual de una muestra de colaboradores.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-016</td>
+                    <td>Selección de corte</td>
+                    <td>CUANDO el usuario elija un mes, EL SISTEMA DEBE tomar del 21 del mes anterior al 20 del mes elegido y permitir cortes anteriores.</td>
+                    <td>Al elegir octubre se consulta del 21 de septiembre al 20 de octubre.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-017</td>
+                    <td>Formato de exportación</td>
+                    <td>DONDE Contabilidad defina un formato de nómina, EL SISTEMA DEBE permitir ajustar el orden y los nombres de las columnas exportadas.</td>
+                    <td>La exportación respeta la configuración guardada.</td>
+                    <td>Should</td>
+                </tr>
+                <tr>
+                    <td>RF-018</td>
+                    <td>Indicadores de asistencia</td>
+                    <td>EL SISTEMA DEBE mostrar la tasa de atrasos, el ausentismo y las horas extras, totales y por área, con tendencia mensual.</td>
+                    <td>Se consultan por área y corte y coinciden con los datos cargados.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-019</td>
+                    <td>Altas y bajas</td>
+                    <td>CUANDO DO registre o cargue una alta o baja, EL SISTEMA DEBE guardarla con fecha, área y motivo.</td>
+                    <td>Una baja modifica el headcount y la rotación del área.</td>
+                    <td>Should</td>
+                </tr>
+                <tr>
+                    <td>RF-020</td>
+                    <td>Permiso de carga</td>
+                    <td>CUANDO un usuario intente cargar archivos, EL SISTEMA DEBE permitirlo solo a RRHH.</td>
+                    <td>Contabilidad y DO no ven ni alcanzan el módulo de carga.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-021</td>
+                    <td>Historial de cargas</td>
+                    <td>EL SISTEMA DEBE registrar cada carga con fecha, hora, usuario, archivos, registros procesados y errores.</td>
+                    <td>RRHH ve la última carga en la cabecera y el historial completo en su pantalla.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-022</td>
+                    <td>Gestión de usuarios</td>
+                    <td>CUANDO DO cree, edite o desactive un usuario, EL SISTEMA DEBE aplicar el cambio de inmediato.</td>
+                    <td>Un usuario desactivado no puede iniciar sesión.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-023</td>
+                    <td>Configuración</td>
+                    <td>EL SISTEMA DEBE permitir a DO editar el corte, la tolerancia de atraso, los rangos de atraso y los recargos de horas extras.</td>
+                    <td>Un cambio de parámetro se refleja en el siguiente cálculo sin tocar el código.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RF-024</td>
+                    <td>Novedades por revisar</td>
+                    <td>CUANDO una marcación no tenga solicitud aprobada (salida posterior al horario, marcación sin par), EL SISTEMA DEBE listarla como novedad.</td>
+                    <td>Las novedades aparecen en una lista aparte y no suman a horas extras.</td>
+                    <td>Should</td>
+                </tr>
+                <tr>
+                    <td>RF-025</td>
+                    <td>Detalle por colaborador</td>
+                    <td>CUANDO el usuario seleccione un colaborador, EL SISTEMA DEBE mostrar sus marcaciones, turno y novedades del corte.</td>
+                    <td>El detalle coincide con el Excel de marcaciones de ese colaborador.</td>
+                    <td>Should</td>
+                </tr>
+                <tr>
+                    <td>RF-026</td>
+                    <td>Indicadores a PDF</td>
+                    <td>CUANDO DO lo solicite, EL SISTEMA DEBE exportar el panel de indicadores a PDF.</td>
+                    <td>El PDF replica los gráficos y filtros activos.</td>
+                    <td>Should</td>
+                </tr>
+                <tr>
+                    <td>RF-027</td>
+                    <td>Alertas por correo</td>
+                    <td>DONDE se active la opción, EL SISTEMA DEBE avisar por correo los atrasos y ausencias del día.</td>
+                    <td>Se envía un correo al cerrar la carga diaria.</td>
+                    <td>Could</td>
+                </tr>
+            </table>
+            </div>
+        </section>
+
+        <section id="no-funcionales">
+            <h2>14 requisitos de calidad</h2>
+            <div class="tabla">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Categoría</th>
+                    <th>Declaración (EARS)</th>
+                    <th>Medida de aceptación</th>
+                    <th>Prioridad</th>
+                </tr>
+                <tr>
+                    <td>RNF-001</td>
+                    <td>Rendimiento</td>
+                    <td>EL SISTEMA DEBE procesar y consolidar la información de 100 colaboradores en menos de 1 minuto.</td>
+                    <td>Excel de 5 MB procesado en menos de 60 s sin timeouts.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RNF-002</td>
+                    <td>Seguridad</td>
+                    <td>EL SISTEMA DEBE almacenar las contraseñas con hash Argon2.</td>
+                    <td>Ninguna credencial está en texto plano en la base.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RNF-003</td>
+                    <td>Usabilidad</td>
+                    <td>EL SISTEMA DEBE aplicar la identidad visual de Nettplus mediante tokens de diseño.</td>
+                    <td>Cambiar la paleta o el logo se hace en un solo archivo de configuración.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RNF-004</td>
+                    <td>Seguridad</td>
+                    <td>EL SISTEMA DEBE transmitir la información solo por HTTPS y mostrar a cada rol únicamente sus vistas.</td>
+                    <td>Ninguna página se sirve por HTTP; las rutas de otro rol devuelven acceso denegado.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RNF-005</td>
+                    <td>Usabilidad</td>
+                    <td>EL SISTEMA DEBE permitir a un usuario sin formación técnica cargar un reporte y ver el resumen diario en 3 clics o menos desde el inicio.</td>
+                    <td>Prueba con un usuario de RRHH que cumple el recorrido.</td>
+                    <td>Should</td>
+                </tr>
+                <tr>
+                    <td>RNF-006</td>
+                    <td>Compatibilidad</td>
+                    <td>EL SISTEMA DEBE funcionar en las últimas versiones de Chrome, Edge y Firefox de escritorio.</td>
+                    <td>Pruebas automatizadas de las funciones principales en los tres.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RNF-007</td>
+                    <td>Compatibilidad</td>
+                    <td>EL SISTEMA DEBE aceptar los .xlsx de Z-BioTime sin conversión manual.</td>
+                    <td>Los reportes de muestra se cargan sin modificarlos.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RNF-008</td>
+                    <td>Confiabilidad</td>
+                    <td>EL SISTEMA DEBE conservar los datos de cortes anteriores y validar los archivos para evitar datos incompletos o duplicados.</td>
+                    <td>Una carga con error no altera los datos ya guardados (carga transaccional).</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RNF-009</td>
+                    <td>Mantenibilidad</td>
+                    <td>EL SISTEMA DEBE tener estructura modular y parámetros en configuración (corte, tolerancia, recargos, formato).</td>
+                    <td>Cambiar el corte 21-20 no requiere modificar el código de los reportes.</td>
+                    <td>Should</td>
+                </tr>
+                <tr>
+                    <td>RNF-010</td>
+                    <td>Rendimiento</td>
+                    <td>EL SISTEMA DEBE responder las consultas del dashboard en menos de 2 segundos.</td>
+                    <td>95% de las consultas en menos de 2 s con un corte completo cargado.</td>
+                    <td>Should</td>
+                </tr>
+                <tr>
+                    <td>RNF-011</td>
+                    <td>Disponibilidad</td>
+                    <td>EL SISTEMA DEBE estar disponible en horario laboral.</td>
+                    <td>99% de disponibilidad de lunes a viernes, de 07:00 a 19:00.</td>
+                    <td>Should</td>
+                </tr>
+                <tr>
+                    <td>RNF-012</td>
+                    <td>Respaldo</td>
+                    <td>EL SISTEMA DEBE generar un respaldo diario de la base de datos y conservar los últimos 30.</td>
+                    <td>Restauración de un respaldo probada al menos una vez.</td>
+                    <td>Should</td>
+                </tr>
+                <tr>
+                    <td>RNF-013</td>
+                    <td>Privacidad</td>
+                    <td>EL SISTEMA DEBE tratar los datos personales de los colaboradores conforme a la Ley Orgánica de Protección de Datos Personales de Ecuador y registrar los accesos a datos sensibles.</td>
+                    <td>Registro de auditoría de inicios de sesión, cargas y exportaciones.</td>
+                    <td>Must</td>
+                </tr>
+                <tr>
+                    <td>RNF-014</td>
+                    <td>Accesibilidad y diseño</td>
+                    <td>EL SISTEMA DEBE mantener contraste suficiente y verse bien en pantallas de escritorio desde 1366 px de ancho.</td>
+                    <td>Contraste mínimo AA (4.5:1) en textos y sin desplazamiento horizontal desde 1366 px.</td>
+                    <td>Should</td>
+                </tr>
+            </table>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
